@@ -2,7 +2,7 @@
 Specialization on Data 
 
 
-## Week 3 : Data Architecture
+## Week 3 : Data Architecture (Authors Note)
 
 This week talks about the 9 principles of data Architecture. and groups them in three 3 groups.
 
