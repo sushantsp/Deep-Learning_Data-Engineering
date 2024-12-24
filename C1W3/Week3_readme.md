@@ -78,3 +78,31 @@ These things are based on CapEx and OpEx. OpEx models are generally preffred in 
 ### AWS Well Architected Framework
 ![AWS Well Architected](./AWS%20well%20architected.png)
 
+![imagge](./AWS%20well%20architected_how%20to%20think.png)
+
+* Helps you design and operate reliable, secure, efficient, cost-effective and sustainable systems in the cloud.
+* Helps you think throufh the pros and cons of different architecture choices. 
+
+* LENS is an extension of AWS Well-Architected Framework that focusess on a particular area, or tech stack and provides guidance that is specific to those context. E.g Data Analytics Lens. helps you with Industry Best Practices. 
+
+AWS LAB From here.
+![image](./Week%203%20Lab.png)
+![image](./Week%203%20Lab_1.png)
+
+* Task to perform
+1. ![image](./Lab%20Architetural%20Digram.png)
+2. ![image](./Logic%20Tier.png)
+3. ![image](./Task.png)
+
+Apache Benchmark is used here as a thrid party tool to do the stress testing of the web applicaion. It simulates the traffic to the webapp served on EC2 instance which can scale up and down based on the incoming traffic.
+
+SO basically :
+	
+	1. Get the address of the web app.
+	2. Simulate the incoming traffic.
+	3. Monitor the CPU usage and Network activity.
+
+
+ explore and assess the security, performance, reliability, and scalability aspects of a web application hosted on AWS. You will do this by simulating traffic to your web application and using AWS tools such as Amazon CloudWatch to monitor computing resources and network activity on your web application. You will configure the computing resources to enable performance efficiency, as well as security options to control the in-bound traffic to your web application. You will perform these tasks through the principles of “good” data architecture as well as the lenses of AWS Well-Architected Framework. By going through this lab, you will gain an understanding of the primitive resources available on AWS, so that you can later apply this understanding when you architect your data pipelines as a Data Engineer.
+
+ Virtual Private Cloud (VPC) and subnet. VPC is a way to isolate your resources (for example EC2) from the outside world. Think about it as a box or a wall that protects your resources, and also as a way to organize them. Resources within the VPC can communicate with each other. But by default, there’s no communication between the VPC and the internet outside unless you allow for this communication to happen by properly configuring the VPC. Now inside your VPC, you may need some resources to be public and some others to be private. How can you do that? This is the role of subnets that you can create within your VPC. Subnets provide you with more detailed control over access to your resources. You can create a public subnet if you want to allow for outside traffic to access your resources, and you can create a private subnet if you don’t want to allow for outside traffic to access your resources.
