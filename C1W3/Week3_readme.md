@@ -1,4 +1,4 @@
-## Week 3 : Data Architecture (Author's Notes)
+## Week 3 : Data Architecture (Personal Notes)
 
 This week talks about the 9 principles of data Architecture. and groups them in three 3 groups.
 
