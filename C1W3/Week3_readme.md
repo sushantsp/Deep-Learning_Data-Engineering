@@ -74,3 +74,7 @@ These things are based on CapEx and OpEx. OpEx models are generally preffred in 
 	6. Software Engineering - How much do you want to do ?
 		- Team's capabilities. Avoid undifferentiated heavy lifting. 
 
+
+### AWS Well Architected Framework
+![AWS Well Architected](./AWS%20well%20architected.png)
+
