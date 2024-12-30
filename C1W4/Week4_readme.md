@@ -160,3 +160,4 @@ user information and info about the products they have been looking at.
 
 
 ![image](./.images/Lab_Architecture.png)
+
