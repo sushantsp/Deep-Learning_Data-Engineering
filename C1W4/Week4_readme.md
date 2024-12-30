@@ -135,3 +135,28 @@ Concept of Iron Triangle :
 * ![image](./.images/Iron_tle_2.png)
 * ![image](./.images/Iron_tle_3.png)
 * ![image](./.images/Iron_tle_4.png)
+
+
+### Translating Requirements to Architecture.
+
+* Conversation between DE and DS.
+    - Gather Functional and Non Functional Requirements.
+
+
+* DS Explain PoC Recommnedermodel they developed and what kind of data they are using. Tabular with features present in the data. - Content based Recommender model. 
+DE has a doubt on How arethey deployed on a sales platform and what is the frequency of training the model. They plan to keep the models output once in production for later use for retraining the model. Once a week could be the retraining time. 
+
+- New batch of training data every once a week - if possible modified according the models expectaion or the newproducts that are coming on the platform. 
+- what are the expecation of DS - what are they browsing ? and other use information.
+user information and info about the products they have been looking at.
+- How fastthey need to generate recommnedations ? - instantaneously. model is fast at recommending thigs - few miliseconds. It is just a similarity caculation between embeddings. 
+- platform logs data about the user.
+- what about the scalability ? 100k customers-at leaes a item. they expect to number to grow as they grow. Activity sometimes spike. 
+
+- There could be wide range of concurrent users at a time. 
+
+- Needs data in batch for frequent retraining. Pipeline for data in batches 
+- How frequntly thisneeds to be done the training. 
+
+
+![image](./.images/Lab_Architecture.png)
