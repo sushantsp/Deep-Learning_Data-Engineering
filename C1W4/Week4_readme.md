@@ -161,3 +161,51 @@ user information and info about the products they have been looking at.
 
 ![image](./.images/Lab_Architecture.png)
 
+### AWS streaming services for streaming pipeline.
+
+CDC - change data capture. 
+
+One option to stream data is to spin up a EC2 and ingest the data as follows. 
+
+![alt text](<.images/AWS_streaming services_1.png>)
+
+Amazon data kinesis services. - Enables real time data ingestion. 
+    - Data from log services
+    - Data from IoT Devices
+    - Data from click stream devices. 
+
+![alt text](<.images/AWS_streaming services_1.png>) 
+![alt text](<.images/AWS_streaming services_2.png>)
+
+Amazon MSK - Amazon managed streaming for apache kafka.
+    
+* Apache Kafka itself is a open source service, much of the same services as the kinesis data streaming. 
+* existing application built on this one are supported easily on AWS. 
+* managing of nodes on a cluster by a server avoids undifferentiated heavy lifting. 
+    
+![alt text](<.images/AWS_streaming services_3.png>) 
+![alt text](<.images/AWS_streaming services_4.png>)
+
+
+### Lab
+
+1. Setting up the batch pipeline
+
+setting up resources on AWS - Glue ETL and s3 using terraform.
+
+* Using AWS RDS as sources system to create the data from. This data will be used for training the recommender model. 
+* Glue ETL will be used to ingest the data from source system. The ingested or transformed data will be stored to S3. Digram below shows the lab architecture of batch pipeline. 
+
+![alt text](.images/1_LAB_Batch_pipeline.png)
+
+2. Setting up the vector database
+
+    * stores the output from recommender model. 
+    * model will be provided as is. it will be sotred in s3 bucket name `ml-artefacts`
+        * With 3 folder in them - embeddings, models and scalers (contains the objects that were used during preproessing part of the the training)
+    
+    ![alt text](.images/2_LAB_Streaming_workflow_1.png) 
+    ![alt text](.images/2_LAB_Streaming_workflow_2.png) 
+    ![alt text](.images/2_LAB_Streaming_workflow_3.png)
+
+3. Setting up the streaming workflow
