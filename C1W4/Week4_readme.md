@@ -209,3 +209,5 @@ setting up resources on AWS - Glue ETL and s3 using terraform.
     ![alt text](.images/2_LAB_Streaming_workflow_3.png)
 
 3. Setting up the streaming workflow
+
+    ![alt text](.images/3_LAB_streaming_architecture.png)
