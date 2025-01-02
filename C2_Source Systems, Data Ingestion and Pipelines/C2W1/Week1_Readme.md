@@ -29,3 +29,6 @@ Streaming Systems -
 |Databases|Files   |Streaming Systems|
 |----|--------   |--------|
 |![alt text](<.images/Types of Source systems_1.png>)| ![alt text](<.images/Types of Source systems_2.png>)   |![alt text](<.images/Types of Source systems_3.png>)
+
+
+![image](.images/In_summary_source_systems.png)
