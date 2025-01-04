@@ -56,16 +56,28 @@ While dealing with relational databases you need to know :
 2. How are they connected ?
 3. What are the columns ?
 
-This can be understool by looking at the entity relationship digram. Then you can start uerying the data.
-
-Ex. Entity relationship Digram showing primary keys and foreign keys
-
-![alt text](.images/relational_databases_3.png) 
-
-Types of joins. By default ON is used for INNER JOIN
-![alt text](.images/relational_databases_4.png) 
-
-you can use other aggregated functions such as count after `SELECT` and create a column for it. Need to use GROUP BY for the same. 
-![alt text](.images/relational_databases_5.png)
 
 
+
+This can be understood by looking at the entity relationship diagram. Then you can start querying the data.
+
+Ex. Entity Relationship Diagram showing primary keys and foreign keys
+
+![Entity Relationship Diagram](.images/relational_databases_3.png) 
+
+Types of joins. By default, ON is used for INNER JOIN
+![Join Types](.images/relational_databases_4.png) 
+
+You can use other aggregated functions such as COUNT after `SELECT` and create a column for it. Need to use GROUP BY for the same. 
+![Aggregation Example](.images/relational_databases_5.png)
+
+
+### SQL LAB
+
+* Before you start issuing SQL queries to the database, you need first to establish a connection to the MYSQL database. For that, you need information such as the database username, password, hostname (or address), port number and the database name.
+
+**##** 3 - Create, Read, Update, and Delete (CRUD) Operations
+
+CRUD stands for Create, Read, Update, and Delete, which are basic operations for manipulating data. When we talk about databases, we use `INSERT INTO`, `SELECT`, `UPDATE`, and `DELETE` statements respectively to refer to CRUD operations.
+
+Refer SQL Practice notebook for more info.
