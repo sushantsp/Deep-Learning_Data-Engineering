@@ -81,3 +81,50 @@ You can use other aggregated functions such as COUNT after `SELECT` and create a
 CRUD stands for Create, Read, Update, and Delete, which are basic operations for manipulating data. When we talk about databases, we use `INSERT INTO`, `SELECT`, `UPDATE`, and `DELETE` statements respectively to refer to CRUD operations.
 
 Refer SQL Practice notebook for more info.
+
+### _NoSQL Databases_
+
+No SQL databases were developed to overcome the limitations of relational databases. 
+![image](./.images/NoSQL%20Databases.png)
+
+* NoSQL databases have horizontal scaling - can also be called as eventual scaling.
+Meaning the data doesnt get updated to all the nodes - it happens eventually. This has adventage in speed and time. particularly useful for social media and not live streaming apps. 
+
+![image](./.images/NoSQL%20Consistency.png)
+
+NoSQL databases have special query language
+
+```json
+{ 
+  "id": 1,  
+  "key": "Blender",  
+  "qty": 6, 
+  "sku": “b32" 
+}
+```
+Query
+
+`db.products.find({qty: {$gt: 4}})`
+
+Types of NoSQL Databases :
+ | Key-Value Pair Databases                          | Document Databases                          |
+ |--------------------------------------------------|---------------------------------------------|
+ | ![alt text](.images/key_value_databases..png)     | ![alt text](.images/document_databases.png) |
+ | * Fast lookup - like user cache to store session & Flexible schema | Fixed schema                               |
+ | No Join Support                                   | Support different Joins                     |
+ | Use Cases - Content Management, user catalogs, sensor readings | Used long term data that has schema         |
+
+
+* ACID Compliant databases
+
+![alt text](.images/ACID_Compliance.png)
+
+Follwoed by the lab  on Amazon DynamoDB
+
+
+![alt text](<.images/DynamoDB NoSQL.png>) 
+![alt text](<.images/DynamoDB NoSQL_2.png>)
+![alt text](<.images/DynamoDB NoSQL_3.png>) 
+
+
+* Object Storages
