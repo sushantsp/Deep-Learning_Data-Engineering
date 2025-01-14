@@ -126,5 +126,37 @@ Follwoed by the lab  on Amazon DynamoDB
 ![alt text](<.images/DynamoDB NoSQL_2.png>)
 ![alt text](<.images/DynamoDB NoSQL_3.png>) 
 
+Data for the lab
+![alt text](<.images/DynamoDB NoSQL_4.png>)
 
+lab uses boto3 which is amazon's SDK for python. - allows you to interact with python resources.
+
+boto3 create client objects. allows you to make api requiest directly. 
+
+
+**How will you create the tables?**
+
+You will use the [DyanmoDB create_table()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/create_table.html) method. This method expects 3 required parameters:
+* `TableName`: the name of the table.
+* `KeySchema`: an array of the attributes that make up the primary key for a table. For each element in this array, you need to specify: `AttributeName`: the name of the attribute, and `KeyType`: the role that the key attribute will assume (`HASH` if it is a partition key and `RANGE` if it is a sort key). For example,
+  ```
+  'KeySchema'= [
+      {'AttributeName': 'ForumName', 'KeyType': 'HASH'}, 
+      {'AttributeName': 'Subject', 'KeyType': 'RANGE'}
+  ]
+  ```
+* `AttributeDefinitions`: an array that describes the attributes that make up the primary key. For each element in this array, you need to specify `AttributeName` and `AttributeType`: the data type for the attribute (S: String, N: Number, B: Binary,...). For example, 
+  ```
+  'AttributeDefinitions': [
+      {'AttributeName': 'ForumName', 'AttributeType': 'S'},
+      {'AttributeName': 'Subject', 'AttributeType': 'S'}
+  ]
+  ```
+There is an additional parameter that you can specify if you don't wish to pay for DynamoDB based on demand and you want to choose the provisioned mode:
+* `ProvisionedThroughput`: a dictionary that specifies the read/write capacity (or throughput) for a specified table. It consists of two items:
+  - `ReadCapacityUnits`: the maximum number of strongly consistent reads consumed per second;
+  - `WriteCapacityUnits`: the maximum number of writes consumed per second. 
 * Object Storages
+
+Generally there is no hierarchy in the object storage. all the things are stored at the top level.
+S3 provides the feature to see them in folder structure but they are all at teh top level. 
