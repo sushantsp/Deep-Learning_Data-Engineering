@@ -127,6 +127,8 @@ Follwoed by the lab  on Amazon DynamoDB
 ![alt text](<.images/DynamoDB NoSQL_3.png>) 
 
 Data for the lab
+
+
 ![alt text](<.images/DynamoDB NoSQL_4.png>)
 
 lab uses boto3 which is amazon's SDK for python. - allows you to interact with python resources.
