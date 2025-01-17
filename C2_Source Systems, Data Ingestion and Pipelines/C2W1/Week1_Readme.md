@@ -181,5 +181,19 @@ Object storage offers a uuid. Universal Unique Identifier. you can have multiple
 3.  Replicate data across several availability zones
 4.  Cheaper than other storage options
 
+- A bucket is a container for objects stored in Amazon S3.
+- An object is a file and any metadata that describes that file. It has a unique identifier, also known as the object key. Object storage allows the storage of any object; you can store not only structured but also unstructured and semi-structured data.
+
 
 ### Logs and Streaming systems
+
+* Logs are more like a exhause of a system. It includes metadata about data creation. 
+* They are a rich source of information just more than monitoring a health of a system.
+
+ ![alt text](.images/Logs_1.png)
+
+ Those changes in database can be used to trigger the ingestion process. 
+ - Can be used for anamoly detection.
+ - It can be used for automation too. 
+ 
+ ![alt text](.images/Logs_2.png)
