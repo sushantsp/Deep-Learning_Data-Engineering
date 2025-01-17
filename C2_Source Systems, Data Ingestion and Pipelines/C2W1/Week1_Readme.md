@@ -162,3 +162,24 @@ There is an additional parameter that you can specify if you don't wish to pay f
 
 Generally there is no hierarchy in the object storage. all the things are stored at the top level.
 S3 provides the feature to see them in folder structure but they are all at teh top level. 
+
+### Object storage
+
+Generally doesnt offer file hierarchical system like a tradtional folder structure.
+
+Object storage offers a uuid. Universal Unique Identifier. you can have multiple version of the same object pointing toward same uuid. This versioning will be part of metadata.
+
+* stores semi-structure and structured data
+* used for storing machine learning objects - serving data for machine learning models. 
+
+![alt text](.images/Object_storage_1.png)
+
+* WHy use object storage ?
+
+1.  Store files of various data formats without a specific file system structure
+2.  Easily scales to massive size.
+3.  Replicate data across several availability zones
+4.  Cheaper than other storage options
+
+
+### Logs and Streaming systems
