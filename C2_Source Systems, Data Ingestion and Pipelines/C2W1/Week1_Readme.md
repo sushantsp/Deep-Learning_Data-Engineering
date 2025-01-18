@@ -197,3 +197,90 @@ Object storage offers a uuid. Universal Unique Identifier. you can have multiple
  - It can be used for automation too. 
  
  ![alt text](.images/Logs_2.png)
+
+
+ ## Connecting to Source Systems
+
+
+ ### Basics of IAM and permissions
+
+ ![alt text](.images/basics_of_iam_1.png)
+
+ **IAM Definition**
+
+ It is a framework for managing permissions. Permissions define which actions an identity can perform on a specific set of resources.
+
+ Principle of least privilege is applied using this framework. 
+
+ * Basics of IAM Components
+ 
+ ![alt text](.images/basics_of_iam_2.png)
+ 
+ ![alt text](.images/basics_of_iam_3.png)
+
+ Example of IAM Policies :
+
+ ![alt text](.images/basics_of_iam_4.png)
+
+ Resources for understanding IAM management;
+
+ * [AWS user Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html)
+
+
+**What is an IAM user?**
+When you create an account on AWS, you begin with the “root user” identity, which has full access to all AWS resources and services in the account. It is strongly recommended that you don’t perform daily operations using this account. Instead, create an admin user for everyday tasks. Whether you’re the root or admin user, you can create other users in your account to allow people in your organization to access AWS resources.
+
+IAM users are created under your AWS account, so you don't need separate accounts for IAM users. Each user could be a person or service that interacts with AWS resources. When you create a user, you define what resources the IAM user can access, and what actions they can perform. AWS will then generate a set of credentials for that user. The credentials could be a username and password for accessing the AWS management console, or they it be an access keys for programmatic access to AWS resources. IAM user credentials are long-term credentials as they stay with the user until the admin rotates them. When you provide users with their own login credentials, you help prevent the sharing of credentials. You can add more users to your account, and all user activities are billed to your account.
+
+By default, a new user does not have any permission to access any AWS resources. You can grant them access to AWS resources by attaching policies to them. A policy specifies what actions are allowed or denied for a given resource (read only, write only, full access). A policy can be attached to multiple users, and a user can have multiple policies. You can choose AWS-managed policies or create your own custom policies. Whenever a user makes a request, AWS evaluates their policies to determine if that request is allowed.
+
+
+**What is an IAM group?**
+
+Now, what if you want to grant the same permissions to more than one user, maybe a team of data scientists who want to access the same resources with the same level of permissions? You could attach the same policy to each user, but it might be hard to manage as the team grows. In this case, you can create an IAM group, which is a collection of users, and then attach the policy to the group rather than individual users. Each user in the group inherits the group's permissions. Think of the IAM group as a way to organize permissions. Here are some features of IAM groups: 
+
+* Groups can have multiple users
+* A user can belong to no group, one group, or multiple groups (up to 10 groups)
+
+* Groups cannot be nested
+
+
+**What is an IAM role?**
+
+The third IAM identity is a role. An IAM role has specific permissions with short-term credentials. Roles can be assumed by entities, like people, applications, or trusted AWS resources. IAM roles don't have long-term credentials. Instead, they provide temporary security credentials for the duration of the role session. You first create an IAM role and attach a policy to it. Then you specify which resource can assume this role. This temporarily grants permissions to AWS resources.
+
+Example 1: Let’s say you run a code on an EC2 instance that needs to read from S3. By default, the EC2 instance does not have permission to read from S3. You can transfer your credentials to EC2, but this is not secure. A better approach is to create a role, attach the required policy to read from S3, and allow the EC2 instance to assume this role. 
+
+Example 2: Let’s say you run a Glue ETL job and want it to write the ingested and transformed data to S3. You can create a role with permissions to write to S3, then allow Glue ETL to assume this role.
+
+```json
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect": "Allow",
+      "Action" : [
+        "s3:*",
+        "s3-object-lambda:*"
+      ]
+      "Resources": "*"
+    }
+  ]
+}
+```
+
+* Version – Specify the version of the policy language that you want to use.
+
+* Statement – Use this element as a container for the details of some given permissions or denials. You can include more than one statement in a policy. If a policy includes multiple statements, AWS applies a logical OR across the statements when evaluating them.
+
+  * Sid (Optional) – Include a statement ID to differentiate between your statements.
+
+  * Effect – Use Allow or Deny to indicate whether the policy allows or denies access.
+
+  * Action – Include a list of actions the policy allows or denies. In this example, the allowed actions on S3 are “*”, meaning all read and write actions on s3 are allowed).
+
+  * Resource – An object or a list of objects to which the actions apply. For example, in the case of S3, you can specify which bucket is allowed or denied access. In this example, the resource element is "*", meaning all resources.
+
+
+Here’s another example of a policy that allows read and write access to all S3 buckets, except the bucket “confidential”, where deletion is denied.
+  ![alt text](.images/basics_of_iam_5.png)
