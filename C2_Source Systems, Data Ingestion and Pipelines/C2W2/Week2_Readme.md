@@ -1,0 +1,43 @@
+### Understanding stakeholder requirements - conversation with Marketing analyst. 
+
+### ETL vs ELT
+
+![alt text](.images/streaming_ingestion_1.png)
+![alt text](.images/Batch_Ingestion_1.png) 
+
+**1. Project Goals and Data Ingestion**
+- The marketing analysts are primarily interested in historical trends, with potential future needs for current data analysis.
+- Data will be sourced from a third-party API, which limits ingestion to a batch process due to the constraints on API calls.
+- The focus is on understanding the trade-offs between ETL and ELT for effective data ingestion.
+
+**2. Overview of ETL and ELT**
+
+_**ETL**_ 
+- **Definition**: The original batch ingestion pattern that extracts raw data, transforms it in a staging area, and then loads it into a target storage destination (e.g., a data warehouse).
+- **Historical Context**: Gained popularity in the 1980s and 1990s when storage and computing resources were limited. Organizations had to carefully plan data ingestion to maximize efficiency.
+- **Process**:
+  1. **Extract**: Retrieve data from source systems via direct database queries or API calls.
+  2. **Transform**: Process data in an intermediate staging area.
+  3. **Load**: Store transformed data in a target system.
+- **Challenges**: Complex joins and heavy queries were difficult due to storage limitations.
+
+_**ELT (Extract, Load, Transform)**_
+- **Definition**: A more modern approach that extracts raw data and loads it directly into a target system without initial transformations.
+- **Emergence**: Gained traction in the early 2010s with the advent of scalable cloud storage and data lakes.
+- **Process**:
+  1. **Extract**: Retrieve raw data from source systems.
+  2. **Load**: Store data directly into the target database or data warehouse.
+  3. **Transform**: Apply transformations post-load, allowing for more flexibility.
+- **Benefits**:
+  - Faster implementation due to less upfront planning.
+  - Quick availability of raw data for analysis.
+  - Preservation of all data for future transformations, reducing the risk of losing information.
+
+**3. Potential Drawbacks of ELT**
+- **Risk of Data Swamps**: Without careful planning, organizations may accumulate vast amounts of unorganized and unmanageable raw data, leading to inefficiencies and confusion.
+- **Data Management**: both ETL and ELT require a clear understanding of end goals and a well-managed data strategy to avoid pitfalls like data swamps.
+
+**Key Takeaways**
+- Understand the differences between ETL and ELT, including their historical context, benefits, and drawbacks.
+- Consider the specific needs of your data project when choosing an ingestion method, with a focus on flexibility and data management.
+- Always establish clear goals for data use and ensure proper data governance to prevent issues like data swamps.
