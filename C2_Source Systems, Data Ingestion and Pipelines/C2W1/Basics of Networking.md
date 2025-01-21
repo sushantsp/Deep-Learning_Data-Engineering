@@ -42,6 +42,50 @@ From my end:
 
 ## AWS Networking Overview - VPCs and Subnets
 
+VPCs span across availibility zones. You can have multiple vpcs based on projects or other enterprise considerations. 
+
+**CIDR Notation Explained**
+
+CIDR, or Classless Inter-Domain Routing, is a method used to allocate IP addresses and manage IP routing. It allows for a more flexible allocation of IP address space compared to the traditional class-based system. Understanding CIDR notation is crucial for configuring networks effectively, especially in cloud environments like AWS.
+
+**Breakdown of CIDR Notation**
+
+IP Address Format: An IP address consists of four numbers separated by dots (e.g., 10.0.0.0). Each number can range from 0 to 255, representing an 8-bit integer value. Thus, the total IP address is a 32-bit value.
+
+**Network and Host Parts:** 
+
+CIDR notation specifies how many bits in the IP address are used for the network part and how many are used for host addresses. This is indicated by a prefix length that follows the IP address, denoted by a slash (e.g., 10.0.0.0/16).
+
+**Understanding the Prefix:**
+
+The prefix length (e.g., /16) indicates how many bits are reserved for the network identifier. In this case, the first 16 bits of the address are fixed, identifying the network.
+The remaining bits (16 bits in this case) are available for host addresses within that network. This means that any resource assigned an IP address within this CIDR block will start with "10.0" and can have the last two octets ranging from 0 to 255.
+Example:
+
+For the CIDR block 10.0.0.0/16:
+The "10.0" part is the network identifier.
+The last two octets (the last 16 bits) can vary, allowing for a range of IP addresses from 10.0.0.1 to 10.0.255.254, which provides a total of 65,536 possible addresses (2^16).
+
+**Subnetting:** 
+
+When creating subnets, you can further divide the available address space. For instance, if you were to create a subnet with a CIDR of 10.0.1.0/24:
+
+Here, the "/24" indicates that the first 24 bits are reserved for the network, allowing for 256 addresses (from 10.0.1.0 to 10.0.1.255), with 10.0.1.1 to 10.0.1.254 available for hosts.
+Importance of CIDR in Networking
+
+**Efficient IP Address Management:** 
+
+CIDR allows network administrators to allocate IP addresses more efficiently and avoid wasting address space by adapting the size of the network according to needs.
+
+**Improved Routing:** CIDR reduces the size of routing tables and improves the routing efficiency on the Internet by allowing for aggregated routes.
+
+**Flexibility:** By not being confined to traditional classes (A, B, C), CIDR provides greater flexibility in defining network sizes, making it easier to adapt to different organizational requirements.
+
+Understanding CIDR notation is essential for anyone working in networking, especially in cloud environments, as it directly impacts how networks are designed, how resources are allocated, and how IP addresses are managed.
+
+*final network architecture*
+![alt text](<.images/VPCs and Subnets_1.png>)
+
 #### Building Networking Components for Data Pipelines
 This chapter covers the topic of setting up networking components necessary for deploying a data pipeline on AWS, including VPCs, subnets, and other related resources. Here's a summary of the main points:
 
@@ -71,21 +115,48 @@ VPC is a closed network by default. By its own there is no way to access interne
 You need to install the door to your VPC to get the public internet access. 
 
 * Installng a door to your house is like providing the internet gateway to your VPC which isolated when it created. Even if your some subnets are private they would still need access to for many reasons such allowing ALB to get to the resource. 
-or for upgrades and patching. This one support outbound and inbound traffic. Internet gateways are attached to only one vpc and one vpc can only be connected to one gateway. This is 1to1 relationship. 
+or for upgrades and patching. This one support both outbound and inbound traffic. Internet gateways are attached to only one vpc and one vpc can only be connected to one gateway. This is 1to1 relationship. 
 
 ![alt text](.images/internet_gateway_1.png) 
 ![alt text](.images/internet_gateway_2.png)
 
+
+* NAT gateways allows only the outgoing traffic and prevents incoming traffic. So the EC2 instance can directly download the updates and patches from the internet without exposing them to the public internet.
+
+* ALB Allows application traffic.
+
 shows setting up the Internet gateway and adding NAT gateways to Public subnets. 
-![alt text](.images/internet_gateway_3.png) ![alt text](.images/internet_gateway_4.png)
+
+![alt text](.images/internet_gateway_3.png) 
+![alt text](.images/internet_gateway_4.png)
 
 ## Route Tables
 
 Route Tables are essential for routing traffic within your VPC. VPC createa default route table for internal communicattion withing the VPC.
 
+* Each subnet can be associated with a route table, which contains a set of rules or routes that determine where network traffic is directed.
+
+![alt text](.images/Route_tables_1.png)
+
 
 ## Network ACLs and Security Groups
+
+![alt text](<.images/Network ACLs and Sec Groups_i.png>) 
+
+Rules from security group can refenrecen rules from other SGs. 
+
+ALB accepts traffic fron internet on port HTTP 80 and HTTPS 443 from the whole internet 0.0.0.0/0 .
+
+Now EC2 Accepts traffic from load balancer ALG. Now here you can reference SGs of load balancer. 
+
+And RDS accepts traffic from EC2 and refers SG of EC2. This is called Security Group Chaining. 
+
+![alt text](<.images/Network ACLs and Sec Groups_ii.png>) 
+![alt text](<.images/Network ACLs and Sec Groups_iii.png>)
+
 ![alt text](<.images/Network ACLs and Sec Groups_1.png>) 
+
+There is nothing magical about creating public subnets and private subnets. Its all about createing proper route tables that define security of these subnets. They define what can come in and what can go out. 
 ![alt text](<.images/Network ACLs and Sec Groups_2.png>)
 
 
