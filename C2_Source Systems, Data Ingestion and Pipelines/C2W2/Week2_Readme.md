@@ -1,5 +1,11 @@
 ### Understanding stakeholder requirements - conversation with Marketing analyst. 
 
+- Learn what actions your stakeholder plan to take with the data.
+- Watn to pull some external data to see what music people are listening to. 
+  - Spotify has public API. 
+
+  Ask for a follow up conversation.  studying the regional trend for the music. Ingest teh data from the API.
+
 ### ETL vs ELT
 
 ![alt text](.images/streaming_ingestion_1.png)
@@ -33,6 +39,8 @@ _**ELT (Extract, Load, Transform)**_
   - Quick availability of raw data for analysis.
   - Preservation of all data for future transformations, reducing the risk of losing information.
 
+![alt text](<.images/ETL vs ELT.png>)
+![alt text](<.images/ETL vs ELT_1.png>)
 **3. Potential Drawbacks of ELT**
 - **Risk of Data Swamps**: Without careful planning, organizations may accumulate vast amounts of unorganized and unmanageable raw data, leading to inefficiencies and confusion.
 - **Data Management**: both ETL and ELT require a clear understanding of end goals and a well-managed data strategy to avoid pitfalls like data swamps.
@@ -41,3 +49,22 @@ _**ELT (Extract, Load, Transform)**_
 - Understand the differences between ETL and ELT, including their historical context, benefits, and drawbacks.
 - Consider the specific needs of your data project when choosing an ingestion method, with a focus on flexibility and data management.
 - Always establish clear goals for data use and ensure proper data governance to prevent issues like data swamps.
+
+
+### Rest API's
+
+- Jeff Bezos to emploees. to use api to offer data and services. 
+![alt text](.images/API_1.png)
+
+REST API - Representational State Transfer API
+
+Uses HTTP as the basis for the communication. 
+
+![alt text](.images/API_2.png)
+
+
+### Lab 1 - Batch Processing to Get Data from an API
+
+performed get request action using spotify api.
+
+It taught what pagination is. What parameters are
