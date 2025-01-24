@@ -1,3 +1,5 @@
+
+## Batch Ingestion
 ### Understanding stakeholder requirements - conversation with Marketing analyst. 
 
 - Learn what actions your stakeholder plan to take with the data.
@@ -67,4 +69,44 @@ Uses HTTP as the basis for the communication.
 
 performed get request action using spotify api.
 
-It taught what pagination is. What parameters are
+It taught what pagination is. What parameters are.
+repeat the lab to solidify the understanding.
+
+
+## Streaming Ingestion
+
+2 modalities of streaming :
+  1. Message queues - Buffer to deliver the messages asynchronously.
+    * FIFo and message gets deleted once processed from teh queue. 
+  2. Event Streaming Platform
+    * Append only persisten losin
+    * not deleted from the log so can be replay or reprocess teh events in the log. 
+
+Apapche Kafka : 
+   - This is an opens source event streaming platform.
+  - message streams form teh event producer are routed to what are called as topics. 
+    - its the job of the producer to send the topics to required topic. 
+
+  ![alt text](<.images/Apache Kafka_1.png>)
+![alt text](<.images/Apache Kafka_2.png>)
+
+Partions above is based on Round robin strategy or Messagekey. Now the consumers are grouped and they are subscribed to a particular topic. And each partiction that is present can only be assigned to single event consumer from the group. 
+
+![alt text](<.images/Apache Kafka_3.png>)
+
+you can keep the database monitored by using strategy known as Continuouse Change data capture. or Continuouse CDC. Ideas is to ingest changes into your data pipeline to ensure that the data in the pipeline is synchronised with teh data updates in the source. 
+
+**Kinessis Streaming Details**
+
+How many shrad are reauited depends upon the write and read rquirements of your system. Image shows teh limits of read and write operations.
+ ![alt text](.images/Kinesis_Data_Streams_1.png)
+ ![alt text](.images/Kinesis_Data_Streams_2.png)
+add kinesis data streams
+
+Add continuous CDC info here. 
+
+ LAB details
+ ![alt text](.images/LAB_details_1.png)
+
+ ![alt text](.images/LAB_details_2.png) 
+ ![alt text](.images/LAB_details_3.png)

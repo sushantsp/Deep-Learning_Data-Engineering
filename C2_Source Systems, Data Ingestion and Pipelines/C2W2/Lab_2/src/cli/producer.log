@@ -1,0 +1,12 @@
+2025-01-24 11:46:16 root         INFO     Starting PutRecord Producer
+2025-01-24 11:46:16 botocore.credentials INFO     Found credentials from IAM Role: LabInstanceRole
+2025-01-24 11:46:16 root         INFO     Produced record 49659896201407752326974948541329098258356252448496025634 to Shard shardId-000000000002
+2025-01-24 11:46:39 root         INFO     Starting PutRecord Producer
+2025-01-24 11:46:39 botocore.credentials INFO     Found credentials from IAM Role: LabInstanceRole
+2025-01-24 11:46:39 root         INFO     Produced record 49659896201407752326974948541666388562028735500067536930 to Shard shardId-000000000002
+2025-01-24 11:47:06 root         INFO     Starting PutRecord Producer
+2025-01-24 11:47:06 botocore.credentials INFO     Found credentials from IAM Role: LabInstanceRole
+2025-01-24 11:47:06 root         INFO     Produced record 49659896201407752326974948542267224694377208055322378274 to Shard shardId-000000000002
+2025-01-24 11:47:35 root         INFO     Starting PutRecord Producer
+2025-01-24 11:47:35 botocore.credentials INFO     Found credentials from IAM Role: LabInstanceRole
+2025-01-24 11:47:35 root         INFO     Produced record 49659896201407752326974948542904328601314119623257358370 to Shard shardId-000000000002
