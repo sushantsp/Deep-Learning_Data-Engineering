@@ -106,12 +106,108 @@ This is a domain specific language created by HCL.
 |  ![alt text](.images/IaaC_3.png)        |  ![alt text](.images/IaaC_4.png)        |    ![alt text](.images/IaaC_5.png)        |
 
 
+### Terraform - Creating an EC2 instance
+
+Generally following steps are taken when creating and using terraform file.
 
 
+![alt text](.images/Terraform_1.png) 
+![alt text](.images/Terraform_2.png)
+
+Thera are can be 5 sections to your `main.tf`. Terraform will read the required file properly with required .tf extension.
+
+* Terraform Settings: This section includes settings for Terraform itself, such as specifying the required version of Terraform.
+
+* Providers: Here, you define the providers that Terraform will use to create and manage resources. Providers are plugins that allow Terraform to interact with cloud platforms and other services.
+
+![alt text](.images/Terraform_3.png)
+
+    "A provider is described as a plugin file or a binary file that Terraform needs to install in order to interact with external resources. Providers are essential for Terraform to communicate with cloud platforms and other services."
+
+* Resources: In this section, you define all the resources you want to set up. Each resource block specifies the type of resource and its configuration.
+
+* Input Variables (Optional): This section allows you to define input variables that can be used to customize the configuration. Input variables provide flexibility and reusability of configuration files by allowing you to pass different values.
+
+* Output Values (Optional): This section is used to define output values that can be used to display information about your resources after they have been created. Output values can help you easily access resource attributes.
 
 
+![alt text](.images/Terraform_4.png)
 
 
+For Ex. 2 required arguments are AMI and instance type. 
+
+**Steps to launch resouce through tf** 
+1. Write Configuration Files
+   - Define resources in `.tf` files
+
+2. Initialize Terraform Workspace
+   - Run `terraform init`
+
+3. Install Providers
+   - Terraform installs necessary plugins
+
+4. Create Execution Plan
+   - Run `terraform plan`
+   - Review proposed actions
+
+5. Approve Plan
+   - Confirm actions to be taken
+
+6. Apply Plan and Provision Infrastructure
+   - Run `terraform apply`
+   - Terraform provisions the resources
 
 
+* You can use input variables to avoid using hardcoded names for provides, resouces and resouces varaibles. You can just call `var.var_name` for using it.
 
+Terraform will ask the names of variables if they have not been provide in default - while creating those. Or you can `tfvars` file to define them separately. Or you can provid them in them argument of terraform `apply` method. 
+![alt text](.images/Terraform_6.png)
+
+* Now each resource has attributes that can be used somewhere else for creating ohter rseources eg ip address of that resources etc. You can do so using output variables. `resource_type.resource_name.attribute` to access the the attribute.
+![alt text](.images/Terraform_5.png)
+
+    You can use `terraform output` to get the outputs. in cli. 
+
+* what if scenriao of multiple resouces. 
+
+**File Organization**: To manage complexity, separate different parts of the configuration into multiple .tf files:
+
+* `variables.tf` for input variables
+* `providers.tf` for provider settings
+* `outputs.tf` for output values
+* `main.tf` for resource definitions
+Terraform Behavior: Terraform automatically combines all .tf files in a directory as if they were one, allowing you to modularize and organize your configuration files without affecting functionality.
+
+
+### Terraform - Defining Variables and Outputs
+
+1. **Data Sources**: Using data blocks to reference resources created outside of Terraform or in another workspace.
+
+
+![alt text](.images/Terraform7.png)
+
+Example to launch the Ec2 inside the subnet that is created in another terraform scrpt. 
+
+![alt text](.images/Terraform_8.png)
+
+
+2. **Modules**: Organizing resources into reusable subdirectories and managing them with module blocks. Its like a regular root directory. 
+
+Example Tutorial :
+
+Add images of example 
+
+
+### LAB 1 :
+![alt text](.images/Lab_1.png)
+
+![alt text](.images/Lab_2.png)
+
+![alt text](.images/Lab_3.png)
+
+Terraform will concatenate all tehse files together.
+Providers.tf contains other providers who are utility providers such as for passwrd generation. which is random utility.
+
+psql -h de-c2w3lab1-db.cpqiucgiud0s.us-east-1.rds.amazonaws.com -U postgres_admin -p 5432 -d postgres --password
+
+ssh -i de-c2w3lab1-bastion-host-key.pem -L 5432:de-c2w3lab1-db.cpqiucgiud0s.us-east-1.rds.amazonaws.com:5432 ec2-user@ec2-3-81-229-28.compute-1.amazonaws.com -N -f
