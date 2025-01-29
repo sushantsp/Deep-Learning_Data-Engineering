@@ -62,3 +62,11 @@ Barr
 ![alt text](.images/GE_WF_4.png) 
 ![alt text](.images/GE_WF_5.png) 
 ![alt text](.images/GE_WF_6.png)
+
+
+### Amazon Cloudwatch
+
+Cloudwatch dashboards can be used for monitoring the output from 
+multiple components of your system. 
+
+![alt text](.images/Amazon_CloudWatch_1.png)
