@@ -95,3 +95,35 @@ Here is the schematic showing the Airflow Components :
 
 Here is Amazon managed workflow for Apache workflow
 ![alt text](.images/Airflow_components_4.png)
+
+
+### Creating a DAG
+
+Joe walks through the proess of creation of DAG using workflow in python. Here is one script for creationg simple ETL DAG throgh python :
+
+![alt text](.images/Creating_DAG_1.png)
+
+Bit shift operator tells you that `Task2` starts after the ``Task1`` has completed. vice versa for `Task3` and `Task2`.
+
+There are different types of operator in airflow. Such as :
+1. `PythonOperator` - Executes a python script
+2. `BashOperator` - Executes Bash commands
+3. `EmptyOperator` - Helps in organising the DAG
+4. `EmailOperator` - For Notification via email
+5. `Sensor` - Special type of operator for making the DAG event driven 
+
+
+These operators are python classes to encapusalte the logic. You can import them into your code.
+
+Other ways to create DAG Dependencies :
+
+![alt text](.images/Creating_DAG_2.png)
+
+### Practice Lab 1 - Buildng a data pipeline using AIrflow
+
+
+### Airflow - Xcom and Variable
+
+- to learn how to pass data from one operator to next. And about global variables. 
+
+**Xcom** is a short for cross communication. Is used for sharing data betwen tasks.
