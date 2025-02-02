@@ -156,3 +156,103 @@ Instead of hardcoding the value of the variables :
 5. Other Practices :
    * Airflow is an Orchestrator not an executer. Heave tasks should be assumed by executor like spark.
    * Including code that is not part of your DAG or operator makes your DAG hard to maintain and read: consider keeping any extra code that is needed for your tasks in a separate file.
+   * 
+
+### TaskFlow API
+
+Its a feature in Apache Airflow 2.0 that uses decorators to create DAG's and tasks associated with DAG making it simpler by creating consise and clean code. 
+
+* `@dag` & `@task` are the decorators that are used in the creating DAG and task. You define the dag parameters direcly in decorator & create a python function
+* We use return function to share the data between the tasks instead of `xcom_push` and `xcom_pull.`
+* Function names become `dag_id` and `task_id`.
+![alt text](.images/TaskFlow_API_1.png)
+
+![alt text](.images/TaskFlow_API_2.png)
+* Here is an example of DAG and task creation:
+```python
+
+from airflow.decorators import dag, task
+from airflow.utils.dates import days_ago
+
+# Define the DAG using the @dag decorator
+@dag(schedule_interval='@daily', start_date=days_ago(1), catchup=False, tags=['example'])
+def example_dag():
+    
+    # Define the first task using the @task decorator
+    @task
+    def extract_data():
+        print("Extracting data...")
+        return {"data": "Sample data"}
+
+    # Define the second task using the @task decorator
+    @task
+    def process_data(data):
+        print(f"Processing data: {data['data']}")
+        
+    # Define task dependencies
+    data = extract_data()
+    process_data(data)
+
+# Instantiate the DAG
+dag_instance = example_dag()
+
+```
+
+**Example of push pull data between tasks using combination of xcom with 2.0 and just using 2.0**
+1. 
+```python
+from airflow.decorators import dag, task
+from airflow.utils.dates import days_ago
+
+# Define the DAG using the @dag decorator
+@dag(schedule_interval='@daily', start_date=days_ago(1), catchup=False, tags=['example'])
+def xcom_example_dag():
+    
+    # Task to push data to XCom
+    @task
+    def push_data():
+        data = "Hello, XCom!"
+        return data  # This implicitly pushes data to XCom
+
+    # Task to pull data from XCom
+    @task
+    def pull_data(ti):
+        # Pull data from XCom using xcom_pull
+        data = ti.xcom_pull(task_ids='push_data') #---xcom_pull is being used here. 
+        print(f"Pulled data: {data}")
+
+    # Define task dependencies
+    data_pushed = push_data()
+    pull_data()
+
+# Instantiate the DAG
+dag_instance = xcom_example_dag()
+```
+**Just using 2.0 Airflow**
+```python
+from airflow.decorators import dag, task
+from airflow.utils.dates import days_ago
+
+# Define the DAG using the @dag decorator
+@dag(schedule_interval='@daily', start_date=days_ago(1), catchup=False, tags=['example'])
+def direct_passing_example_dag():
+    
+    # Task to return data
+    @task
+    def push_data():
+        return "Hello, TaskFlow!"  # Return data directly
+
+    # Task to receive data as a function argument
+    @task
+    def pull_data(data):
+        print(f"Pulled data: {data}")
+
+    # Define task dependencies and pass data directly
+    data = push_data()
+    pull_data(data)
+
+# Instantiate the DAG
+dag_instance = direct_passing_example_dag()
+```
+
+
