@@ -131,3 +131,28 @@ Other ways to create DAG Dependencies :
 Data is stored in metadata database. `xcom_push` pushes the data in database and `xcom_pull` pulls the data in next task where it is required. Both are based on context dictiornay that is associated with DAG.
 
 ![alt text](.images/Xcom_DAG_1.png)
+
+![alt text](.images/Xcom_DAG_2.png)
+
+You can check your xcoms in your UI. for accessing you can check them under `Admin > Xcoms`.
+
+_Caution_: They are not designed for passing large datasets. They will degrade the performance of the DAG and database. 
+**User-Created Variables**
+
+Instead of hardcoding the value of the variables :
+
+* Create variable in airflow UI
+* Create Environment variables
+
+![alt text](.images/Xcom_DAG_3.png)
+
+**Best Practices**
+
+1. Avoid high level code
+2. Keep Tasks simple and atomic
+3. Use Variables, user-Created Variables in AirFlow UI
+4. Create task groups if possibe :
+   In the Airflow UI, you can group tasks using Task Groups to organize your DAGs and make them more readable. Inside the task group, you can define tasks and their dependencies using the bit-shift operators <<  and  >>.  You can create a Task Group using the  "with" statement, as shown in the following example.
+5. Other Practices :
+   * Airflow is an Orchestrator not an executer. Heave tasks should be assumed by executor like spark.
+   * Including code that is not part of your DAG or operator makes your DAG hard to maintain and read: consider keeping any extra code that is needed for your tasks in a separate file.
