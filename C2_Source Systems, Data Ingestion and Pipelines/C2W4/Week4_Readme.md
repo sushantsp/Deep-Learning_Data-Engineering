@@ -124,6 +124,10 @@ Other ways to create DAG Dependencies :
 
 ### Airflow - Xcom and Variable
 
-- to learn how to pass data from one operator to next. And about global variables. 
+- to learn how to pass data from one task to next. And about global variables.
+- We use intermediate storage like S3 for large datasets. But for small data like metadata, dates, single value variables we use xcom
 
-**Xcom** is a short for cross communication. Is used for sharing data betwen tasks.
+**Xcom** is a short for cross communication. Is used for sharing data betwen tasks. 
+Data is stored in metadata database. `xcom_push` pushes the data in database and `xcom_pull` pulls the data in next task where it is required. Both are based on context dictiornay that is associated with DAG.
+
+![alt text](.images/Xcom_DAG_1.png)
