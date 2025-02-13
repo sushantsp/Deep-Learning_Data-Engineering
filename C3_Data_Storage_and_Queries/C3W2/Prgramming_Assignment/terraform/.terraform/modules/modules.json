@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"alter_table","Source":"./modules/alter_table","Dir":"modules/alter_table"},{"Key":"landing_etl","Source":"./modules/landing_etl","Dir":"modules/landing_etl"},{"Key":"transform_etl","Source":"./modules/transform_etl","Dir":"modules/transform_etl"}]}
