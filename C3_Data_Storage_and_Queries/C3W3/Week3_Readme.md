@@ -70,8 +70,7 @@ EXPLAIN SELECT * FROM customer WHERE customer_id = 3;
 ```
 This will give you insights into how the query will be executed, including whether it will use an index on the `customer_id` column or perform a full table scan.
 
-Using the **EXPLAIN** command is a valuable way to analyze and optimize your queries. If you have more questions about this or need further clarification, let me know!
-
+Using the **EXPLAIN** command is a valuable way to analyze and optimize your queries.
 
 ### Advanced SQL Queries P1
 
