@@ -175,6 +175,7 @@ GROUP BY customer_id;
 - **Usage**: In this example, `customer_payment_info` is the CTE that calculates whether each payment was made on time (1 for on-time, 0 for late). The main query then calculates the average of these values to determine the percentage of on-time payments for each customer.
 
 **SUBQUERIES**
+
 ![alt text](.images/Adv_Queries_2.png)
 
 **SQL Window Functions**
