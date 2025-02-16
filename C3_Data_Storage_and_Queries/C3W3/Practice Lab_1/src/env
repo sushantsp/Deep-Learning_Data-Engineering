@@ -1,0 +1,10 @@
+RDSDBHOST=de-c3w3lab1-rds.cn4es4wweig6.us-east-1.rds.amazonaws.com
+RDSDBPORT=5432
+RDSDBNAME=dev
+RDSDBUSER=postgresuser
+RDSDBPASSWORD=adminpwrd
+REDSHIFTDBHOST=redshiftcluster-essbzdenchi2.cna7gxslp2lt.us-east-1.redshift.amazonaws.com
+REDSHIFTDBPORT=5439
+REDSHIFTDBNAME=dev
+REDSHIFTDBUSER=defaultuser
+REDSHIFTDBPASSWORD=Defaultuserpwrd1234+

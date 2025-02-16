@@ -1,0 +1,23 @@
+2025-02-16 06:24:52 root         INFO     Starting GetRecords Consumer
+2025-02-16 06:24:52 botocore.credentials INFO     Found credentials in shared credentials file: /home/coder/.aws/credentials
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:03:00', 'total_sales': 9950.0} from Shard shardId-000000000000 at position 49660597144827377970417774388341999040497941154499657730
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:06:00', 'total_sales': 24224} from Shard shardId-000000000000 at position 49660597144827377970417774388343207966317555783674363906
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:09:00', 'total_sales': 21023} from Shard shardId-000000000000 at position 49660597144827377970417774388344416892137170412849070082
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:12:00', 'total_sales': 17136} from Shard shardId-000000000000 at position 49660597144827377970417774388345625817956785042023776258
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:15:00', 'total_sales': 20790.0} from Shard shardId-000000000000 at position 49660597144827377970417774388346834743776399671198482434
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:18:00', 'total_sales': 21033} from Shard shardId-000000000000 at position 49660597144827377970417774388348043669596014300373188610
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:21:00', 'total_sales': 24367} from Shard shardId-000000000000 at position 49660597144827377970417774388349252595415628929547894786
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:24:00', 'total_sales': 25045} from Shard shardId-000000000000 at position 49660597144827377970417774388350461521235243558722600962
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:27:00', 'total_sales': 25546} from Shard shardId-000000000000 at position 49660597144827377970417774388351670447054858187897307138
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:30:00', 'total_sales': 20914} from Shard shardId-000000000000 at position 49660597144827377970417774388352879372874472817072013314
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:33:00', 'total_sales': 16973} from Shard shardId-000000000000 at position 49660597144827377970417774388354088298694087446246719490
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:36:00', 'total_sales': 21079} from Shard shardId-000000000000 at position 49660597144827377970417774388355297224513702075421425666
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:39:00', 'total_sales': 22807} from Shard shardId-000000000000 at position 49660597144827377970417774388356506150333316704596131842
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:42:00', 'total_sales': 19354} from Shard shardId-000000000000 at position 49660597144827377970417774388357715076152931333770838018
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:45:00', 'total_sales': 14397} from Shard shardId-000000000000 at position 49660597144827377970417774388358924001972545962945544194
+2025-02-16 06:24:52 root         INFO     Read Order {'event_time': '2024-06-01 00:48:00', 'total_sales': 17888} from Shard shardId-000000000000 at position 49660597144827377970417774388360132927792160592120250370
+2025-02-16 06:26:30 root         INFO     Read Order {'event_time': '2024-06-01 00:51:00', 'total_sales': 24522} from Shard shardId-000000000000 at position 49660597144827377970417774401152985950954174971356643330
+2025-02-16 06:29:15 root         INFO     Read Order {'event_time': '2024-06-01 00:54:00', 'total_sales': 26317} from Shard shardId-000000000000 at position 49660597144827377970417774421571743044245273070857617410
+2025-02-16 06:32:28 root         INFO     Read Order {'event_time': '2024-06-01 00:57:00', 'total_sales': 25281} from Shard shardId-000000000000 at position 49660597144827377970417774441788609525660730091047485442
+2025-02-16 06:39:52 root         INFO     Starting GetRecords Consumer
+2025-02-16 06:39:52 botocore.credentials INFO     Found credentials in shared credentials file: /home/coder/.aws/credentials
