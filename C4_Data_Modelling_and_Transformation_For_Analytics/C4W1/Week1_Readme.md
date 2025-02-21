@@ -131,3 +131,136 @@ practiceLab Data Normalization
 
   **Example**
   ![alt text](.images/Star_Schema_3.png)
+
+
+
+  ## Data Modelling Technique 
+
+ **Inmon vs Kimball Data Warehouse Architecture**
+
+
+
+The lecture discusses two primary data modeling approaches for data warehouses: **Inmon** and **Kimball**. It highlights their definitions, methodologies, and applications in the context of data engineering.
+
+### Inmon Approach
+- **Origin**: Developed by Bill Inmon in 1989, he is recognized as the father of the data warehouse.
+- **Definition**: Inmon defines a data warehouse as a **subject-oriented, integrated, non-volatile, and time-variant** collection of data that supports management's decision-making.
+- **Key Characteristics**:
+  - **Subject-Oriented**: Data is organized around major subject areas of the business (e.g., products, orders, customers).
+  - **Granularity**: The model includes detailed data related to each subject, such as business keys, relationships, and attributes.
+  - **Highly Normalized**: Data is consolidated from various sources and stored in a highly normalized form (typically third normal form).
+  
+  ![alt text](.images/Inmon_data_modelling_1.png)
+
+  - **Single Source of Truth**: The data warehouse serves as a central repository that supports various analytical needs, even if those needs are not yet defined.
+- **Benefits**:
+  - Reduces data duplication, leading to fewer analytical errors.
+  - Enhances data integrity and consistency.
+- **Example**: In an e-commerce context, data from orders, inventory, and marketing systems can be ingested and stored in a normalized format. Department-specific data marts can then be created for sales, marketing, and purchasing, each tailored to their unique needs.
+![alt text](.images/Inmon_data_modelling_2.png)
+
+### Kimball Approach
+- **Origin**: Developed by Ralph Kimball in the early 1990s.
+- **Focus**: Unlike Inmon, Kimball's approach emphasizes modeling and serving department-specific analytics directly from the data warehouse.
+
+![alt text](.images/Kimball_data_Modelling_2.png)
+- **Key Characteristics**:
+  - **Star Schemas**: Data is structured as star schemas or similar variants, allowing for direct access from the data warehouse.
+  - **Faster Modeling**: This approach enables quicker iterations and faster insights compared to Inmon's method.
+  - **Data Redundancy**: While it allows for rapid implementation, it may introduce data integrity issues due to redundancy.
+- **Benefits**:
+  - Ideal for organizations that prioritize quick, practical insights into specific business processes.
+- **Example**: In an e-commerce scenario, data from various source systems can be modeled into multiple star schemas to address different business facts, allowing departments to query data efficiently.
+
+### Conclusion
+- **Choosing Between Approaches**:
+  - **Inmon** is recommended for organizations that prioritize data quality and consistency, especially when analytical requirements are not well-defined.
+  - **Kimball** is suitable for organizations looking for rapid implementation and insights into specific business processes.
+- **Flexibility**: Depending on the organization's needs, both approaches may be applied to different data warehouses.
+
+
+**From Normalization to star Schema**
+- The lecture discusses the process of transforming normalized data stored in a relational database into a star schema, which is more efficient for querying and analysis.
+
+### Key Concepts
+1. **Normalized Data**: The data is initially in a normalized schema, consisting of multiple tables (e.g., Customers, Orders, Items, and Stores).
+
+2. **Star Schema**: A star schema simplifies data retrieval by organizing data into fact and dimension tables. Fact tables contain measurable data (facts), while dimension tables provide context (dimensions).
+
+### Steps to Create a Star Schema
+1. **Understand Business Needs**:
+   - Identify the business processes to model in the fact tables.
+   - Determine the grain (level of detail) for the fact table, such as total sales transactions or individual product items.
+  ![alt text](.images/Normalization_to_Star_1.png)
+
+2. **Identify Facts and Dimensions**:
+   - Select business measurements (facts) related to the grain.
+   - Choose dimensions that provide context for the facts, such as stores, dates, and product features.
+  ![alt text](.images/Normalization_to_Star_2.png)
+
+3. **Create Dimension Tables**:
+   - **Stores Dimension**: Create a table with attributes like `store_id`, `store_name`, `store_city`, and `store_zipcode`. Use a surrogate key (e.g., `store_key`) for unique identification.
+   ![alt text](.images/Normalization_to_Star_3.png)
+
+   - **Items Dimension**: Create a table with attributes like `SKU`, `name`, and `brand`. Again, use a surrogate key (e.g., `item_key`).
+   - **Date Dimension**: Generate a table with sequential dates and corresponding attributes (day of the week, month, quarter, year).
+
+4. **Create Fact Table**:
+   - The fact table (e.g., `fact_order_items`) contains foreign keys linking to the dimension tables and facts like quantity sold and price.
+   - Use a surrogate key (e.g., `fact_order_key`) to uniquely identify each row.
+![alt text](.images/Normalization_to_Star_4.png)
+### Relationships
+- The relationships between the fact and dimension tables are defined:
+  - One-to-one relationships between the fact table and dimension tables.
+  - One-to-many relationships from dimension tables to the fact table.
+
+### Tools for Data Transformation
+- The lecture introduces **DBT (Data Build Tool)**, which simplifies the data transformation process by generating SQL code for modeling data in a star schema.
+
+### Conclusion
+- The lecture emphasizes the importance of understanding business needs and the steps involved in creating a star schema from normalized data. It also highlights the use of tools like DBT for efficient data transformation.
+
+
+### Modeling Example
+
+
+Assume you work at a car rental company and you are tasked with developing a star schema model that can help the  company gather and analyze information on rental trends and customer preferences. For example, you'd like to determine peak booking times, identify the most popular cars being rented, and adjust car rental rates based on demand.
+
+1. **Identify the business process and the grain**: the business process consists of the car rental transactions. The grain would be an entire rental booking made by a customer for a particular car.  So each row in the fact table should correspond to one rental booking and could be identified by the booking id. 
+
+2. **Identify the dimension tables**: to provide context for each rental event,  you can create the following dimension tables:
+
+    * dim_customers that contains the customers' details (name, address, phone number, driver's license number);
+
+    * dim_cars that contains the cars' information (VIN - Vehicle Identification Number, model, brand, make, color, purchase date);
+
+    * dim_dates that contains the information of a given date (year, month, time, day, quarter, day of the week). 
+
+    * dim_stores that contains the information of the rental store (zip code, state, city, address)
+
+3. **Identify the fact table**: Each row represents one rental booking which is identified by the booking id. It also contains the dates that describe this rental period: rental start date, rental end rental date, and return date. It also contains the foreign keys: customer key, car key and store key. And the business measures are the booking fee, insurance fee, fuel charge, extra rental days, fuel level, and total cost.
+
+  ![alt text](<.images/Modelling Example.png>)
+
+
+### One Big Table
+
+Certainly! Here’s a detailed summary of the key concepts from the course material you provided:
+
+- **Modeling Approaches**: The course discusses traditional data modeling approaches like **Kimball** and **Inmon**, which were developed when data warehouses were expensive and resource-constrained.
+
+- **One Big Table (OBT)**: 
+  - This approach involves combining all data into a single wide table, which can have thousands of columns.
+  - It is highly **denormalized** and flexible, allowing for faster analytical queries without the need for complex joins.
+  - The wide table can store various data types, with each row representing a unique entity, such as a customer order.
+
+- **Performance Benefits**: 
+  - Wide tables can improve scan performance compared to normalized data or star schemas, as they contain all necessary data in one place.
+  - The emergence of **columnar databases** allows for efficient reading of only the required columns, making it cost-effective to handle sparse data with many null values.
+
+- **Criticism of OBT**: 
+  - One major criticism is the potential loss of business logic in analytics due to blending data.
+  - Complex data structures like arrays may be needed for nested data, which can hinder performance during updates and aggregations.
+
+- **Choosing the Right Approach**: 
+  - There is no one-size-fits-all solution for data modeling. It's essential to understand the trade-offs between flexibility, data integrity, and ease of use for stakeholders.
