@@ -245,9 +245,9 @@ Assume you work at a car rental company and you are tasked with developing a sta
 
 ### One Big Table
 
-Certainly! Here’s a detailed summary of the key concepts from the course material you provided:
-
 - **Modeling Approaches**: The course discusses traditional data modeling approaches like **Kimball** and **Inmon**, which were developed when data warehouses were expensive and resource-constrained.
+
+  ![alt text](.images/One_Big_table_1.png)
 
 - **One Big Table (OBT)**: 
   - This approach involves combining all data into a single wide table, which can have thousands of columns.
@@ -264,3 +264,66 @@ Certainly! Here’s a detailed summary of the key concepts from the course mater
 
 - **Choosing the Right Approach**: 
   - There is no one-size-fits-all solution for data modeling. It's essential to understand the trade-offs between flexibility, data integrity, and ease of use for stakeholders.
+
+  ![alt text](.images/One_big_Table_2.png)
+
+### Assignment :
+
+![alt text](.images/DBT_Demo_1.png)
+
+![alt text](.images/DBT_Demo_2.png)
+
+This lecture, the focus is on using **dbt (data build tool)** to model normalized data into a **star schema**. Here’s a detailed summary of the key points:
+
+- **Setup**: A local PostgreSQL database is prepared with five tables: order items, orders, customers, items, and stores, all under a schema labeled **staging schema**.
+
+- **Star Schema Creation**: The lecture explains how to create a new schema called **star schema**, which will include:
+  - **Fact Table**: `fact_order_items`
+  - **Dimension Tables**: `dim_stores`, `dim_items`, and `dim_date`
+
+- **Dbt Installation**: 
+  - Two environments are discussed: `dbt core` (open-source command line tool) and `dbt Cloud` (hosted environment).
+  - The lecture proceeds with the installation of `dbt core` and the `dbt-postgres adapter` to connect to the PostgreSQL database.
+
+- **Project Initialization**: 
+  - A new virtual environment is created, and dbt is initialized with the command `dbt init`, specifying the project name as **dbt tutorial**.
+  - The lecture covers the creation of a project folder containing various subfolders for models, analyses, macros, seeds, snapshots, and tests. the purpose of each folder created during the initialization:
+
+  1. **models**
+      -  This is the main directory where you define the SQL files for each table in your star schema. Each SQL file contains the SQL statements that create the corresponding tables in the database. This is where most of your work will be focused.
+
+  2. **analyses**
+      -  This folder is used to store SQL statements that are not part of the models directory. It can be used for exploratory analysis or ad-hoc queries that you want to run against your data.
+
+  3. **macros**
+      -  This folder is for storing reusable pieces of SQL code that can be called multiple times within your models. It helps in maintaining DRY (Don't Repeat Yourself) principles in your SQL code.
+
+  4. **seeds**
+      -  This folder is intended for CSV files that you want to load into your data warehouse or database using dbt. It allows you to easily manage and import static data.
+
+  5. **snapshots**
+      -  This folder is used to record changes in your tables over time. Snapshots help in tracking historical data and changes, which can be useful for auditing and analysis.
+
+  6. **tests**
+      -  This folder is where you can create SQL statements to perform specific tests on your data. It helps ensure data quality and integrity by allowing you to validate your data against certain conditions.
+
+  7. **dbt_project.yml**
+      -  This file contains the configurations for your dbt project, including project name, version, and directory settings. It defines how dbt should behave when running commands.
+
+  8. **profiles.yml**
+      -  This file specifies the connection details to your database, including credentials and database type. It is essential for dbt to connect to the correct database environment.
+
+- **Configuration Files**: 
+  - The `dbt_project.yml` file is introduced, which contains project configurations, including the project name, version, and directory settings.
+  - The `profiles.yml` file is created to specify the connection details to the PostgreSQL database, including host, username, password, and database name.
+
+- **Connection Verification**: 
+  - The connection to the database is verified using the command `dbt debug`.
+
+- **Sensitive Information**: 
+  - It is advised to move the **profiles.yml** file to a hidden `.dbt` folder in the home directory for security.
+
+
+### Week_1 Summary
+
+![alt text](.images/Week_summary.png)
