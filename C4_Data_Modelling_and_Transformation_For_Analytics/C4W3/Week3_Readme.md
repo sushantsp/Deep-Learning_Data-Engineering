@@ -1,3 +1,8 @@
+### Table of Contents :
+
+1. [Learning Objectives](#learning-objectives)
+2. [Week Overview](#week-overview)
+
 ## Learning Objectives
 * Identify batch transformation use cases and patterns
 * Compare an in-memory processing framework like Spark, and a processing framework that involves disk read and write operations, such as Hadoop
@@ -517,3 +522,39 @@ Here's a detailed bullet-point summary of the transcription, capturing key point
   - Implement a streaming change data capture (CDC) pipeline.
   - Use Debezium to capture changes from a source database, push to a CFI stream, and process with Flink.
   - Lab walkthrough available for guidance.
+
+
+### Week 3 Summary :
+
+Here’s a detailed bullet-point summary of the provided text, outlining the key points discussed during the week:
+
+- **Data Transformations Overview**:
+  - Explored various data processing frameworks for transforming data.
+  - Emphasized not just modeling data to target schemas but also increasing data value and quality through cleaning and enrichment.
+
+- **Batch Transformation Considerations**:
+  - Discussed factors like data size and machine memory specifications.
+  - Highlighted the use of distributed processing frameworks for large data sets or parallel computation needs.
+  - Explained how tools like Spark evolved from Hadoop MapReduce, focusing on their use of disk storage for intermediate results.
+
+- **Spark Framework**:
+  - Provided an overview of Spark’s operations and architecture.
+  - Practiced coding with Spark DataFrames and Spark SQL.
+  - Noted the advantages of DataFrames for complex transformations and maintaining modular, testable code compared to SQL for simpler tasks.
+
+- **Streaming Transformations**:
+  - Discussed the importance of understanding use cases and system performance requirements.
+  - Compared micro-batch frameworks like Spark Streaming with true streaming systems like Flink for different latency and processing needs.
+
+- **Hands-On Lab**:
+  - Implemented a log-based Change Data Capture (CDC) approach using Debezium and Apache Kafka.
+  - Used Flink for processing database updates.
+![alt text](.images/Week_Summary_1.png)
+- **Conclusion of Transformation Stage**:
+  - Completed the critical transformation stage of the data engineering lifecycle, preparing data for downstream use cases.
+
+- **Upcoming Topics**:
+  - Next week will focus on serving transformed data to stakeholders.
+  - Final week includes a Capstone project to integrate various data engineering concepts learned throughout the program.
+
+This summary captures the essence of the week's lessons, focusing on both theoretical and practical aspects of data transformation in the context of data engineering.
