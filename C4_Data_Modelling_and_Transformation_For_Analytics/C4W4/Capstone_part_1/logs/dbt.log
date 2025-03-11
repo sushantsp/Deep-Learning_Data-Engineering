@@ -1,0 +1,31 @@
+[0m05:24:14.293509 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f684578830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f682de3b30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f68504bf80>]}
+
+
+============================== 05:24:14.296962 | fe1c62c0-8d8c-4875-a43d-c2501b3b8708 ==============================
+[0m05:24:14.296962 [info ] [MainThread]: Running with dbt=1.8.1
+[0m05:24:14.300907 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'profiles_dir': '/home/coder/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt init dbt_modelling', 'send_anonymous_usage_stats': 'True'}
+[0m05:24:14.318634 [debug] [MainThread]: Starter project path: /home/coder/miniconda/lib/python3.12/site-packages/dbt/include/starter_project
+[0m05:24:14.610965 [info ] [MainThread]: 
+Your new dbt project "dbt_modelling" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m05:24:14.611637 [info ] [MainThread]: Setting up your profile.
+[0m05:24:47.061060 [debug] [MainThread]: Redshift adapter: Setting redshift_connector to ERROR
+[0m05:24:47.063225 [debug] [MainThread]: Redshift adapter: Setting redshift_connector.core to ERROR
+[0m05:27:57.548777 [info ] [MainThread]: Profile dbt_modelling written to /home/coder/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m05:27:57.551428 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 223.36066, "process_user_time": 1.54192, "process_kernel_time": 0.185499, "process_mem_max_rss": "94756", "process_in_blocks": "40779", "process_out_blocks": "120"}
+[0m05:27:57.552076 [debug] [MainThread]: Command `dbt init` succeeded at 05:27:57.551962 after 223.36 seconds
+[0m05:27:57.556092 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f682951400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f684578830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70f6829863c0>]}
+[0m05:27:57.559691 [debug] [MainThread]: Flushing usage events
